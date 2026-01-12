@@ -2,16 +2,20 @@
 
 import * as React from "react";
 import {
+  EarthIcon,
   // AudioWaveform,
   // BookOpen,
   // Bot,
   // Command,
-  Frame,
-  GalleryVerticalEnd,
+  // Frame,
+  // GalleryVerticalEnd,
+  MegaphoneIcon,
   // Map,
-  PieChart,
+  // PieChart,
+  ShoppingBagIcon,
+  ShoppingCartIcon,
   // Settings2,
-  SquareTerminal,
+  // SquareTerminal,
 } from "lucide-react";
 
 import { NavMain } from "@/components/nav-main";
@@ -169,7 +173,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     teams: [
       {
         name: "Ruthies Africa",
-        logo: GalleryVerticalEnd,
+        logo: EarthIcon,
         plan: "Enterprise",
       },
       // {
@@ -187,12 +191,16 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       {
         title: "Products",
         url: "#",
-        icon: SquareTerminal,
+        icon: ShoppingBagIcon,
         isActive: true,
         items: [
           {
             title: "All Products",
             url: "/dashboard",
+          },
+          {
+            title: "Add",
+            url: "/dashboard/add"
           },
           {
             title: "Categories",
@@ -270,12 +278,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       {
         name: "Announcements",
         url: "/dashboard/announcements",
-        icon: Frame,
+        icon: MegaphoneIcon,
       },
       {
         name: "Orders",
         url: "/dashboard/orders",
-        icon: PieChart,
+        icon: ShoppingCartIcon,
       },
       // {
       //   name: "Travel",
