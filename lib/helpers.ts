@@ -29,9 +29,9 @@ export async function createProduct(request: NextRequest) {
   const published = formData.get('published') === 'true';
   const sizes = formData.getAll('sizes') as string[];
   const colors = formData.getAll('colors') as string[];
-  const amountStr = formData.get('amount') as string;
+  const amountStr = formData.get('stock') as string;
   const gender = formData.get("gender") as string;
-  const amount = amountStr ? parseInt(amountStr, 10) : null;
+  const stock = amountStr ? parseInt(amountStr, 10) : null;
 
   if (published) {
     if (!name || !description || !images.length || !price || !category || !brand || !gender) {
@@ -39,7 +39,7 @@ export async function createProduct(request: NextRequest) {
     }
   }
 
-  const newProduct = new Product({ name, description, images, price, category, brand, published, sizes, colors, amount, gender });
+  const newProduct = new Product({ name, description, images, price, category, brand, published, sizes, colors, stock, gender });
   await newProduct.save();
   return newProduct;
 }

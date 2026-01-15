@@ -2,14 +2,14 @@ import mongoose, { Document, Model, Schema } from "mongoose";
 
 export interface IProduct extends Document {
   name: string;
-  images?: string[];
+  images?: string[] | null;
   price?: {
     NGN?: string;
     USD?: string;
     GBP?: string;
   };
-  isAvailable: boolean;
-  amount?: number | null; // Amount available in stock
+  isAvailable?: boolean;
+  stock?: number | null; // Amount available in stock
   description?: string;
   sizes?: string[] | null;
   colors?: string[];
@@ -21,7 +21,7 @@ export interface IProduct extends Document {
   publisheshed: boolean;
 }
 
-const ProductSchema: Schema<IProduct>  = new Schema(
+const ProductSchema: Schema<IProduct> = new Schema(
   {
     price: {
       NGN: { type: String, default: "0.00" },
@@ -37,12 +37,16 @@ const ProductSchema: Schema<IProduct>  = new Schema(
     category: { type: String, required: true },
     gender: { type: String, enum: ["male", "female", "unisex"] },
     brand: { type: String },
-    amount: { type: Number, default: null },
+    stock: { type: Number, default: null },
     ratings: { type: Number, default: 0 },
     publisheshed: { type: Boolean, default: false },
     numOfReviews: { type: Number, default: 0 },
-  }, { timestamps: true }
+  },
+  { timestamps: true }
 );
 
-const Product: Model<IProduct> = mongoose.model<IProduct>("Product", ProductSchema);
+const Product: Model<IProduct> = mongoose.model<IProduct>(
+  "Product",
+  ProductSchema
+);
 export default Product;
